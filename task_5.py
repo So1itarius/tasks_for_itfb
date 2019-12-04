@@ -5,21 +5,15 @@
 # Пример: Вход: "23" Выход: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 # Примечение: Вывод в части сортировки полученных строк можно сделать в любом порядке. Бонус: отсортировать строки
 # по алфавиту.
+import itertools
+import sys
 
-dict = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
-
-
-a = "23"
-
-def func(strng):
-    a=list(strng)
-    a=[list(dict[i]) for i in a]
-    return a
-v=func(a)
-print(v)
+buttons = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
 
+def main(argv):
+    return [''.join(items) for items in itertools.product(*[list(buttons[i]) for i in list(argv[0])])]
 
 
-
-
+if __name__ == "__main__":
+    print(main(sys.argv[1:]))
