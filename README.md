@@ -9,6 +9,7 @@
 
 # Запуск
 
->python task_5.py desired_line 
+>python task_*.py desired_line 
 
-где desired_line - это нужная строка с цифрами от 2 до 9
+где desired_line - это нужная строка с цифрами от 2 до 9,
+а * - номер версии файла
