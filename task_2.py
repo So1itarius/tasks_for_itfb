@@ -20,7 +20,7 @@ def sort_1(lst):
             flag += 1
         if i == len(lst) - 1:
             i = 0
-    return (lst)
+    return lst
 
 
 def sort_2(lst):
