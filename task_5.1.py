@@ -27,7 +27,6 @@ def reverse_func(lst):
         # (пока не будет равна 1)
 
 
-
 def main(argv):
     return reverse_func(listing(argv[0]))
 
