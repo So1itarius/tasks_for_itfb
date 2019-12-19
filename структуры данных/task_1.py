@@ -6,6 +6,9 @@
 class linked_list(object):
     pass
 
+    def __init__(self):
+        self.head = None
+
     def InsertAtEnd(self):
         """ InsertAtEnd – вставка в конец. """
 
@@ -45,4 +48,7 @@ class node(object):
 
 
 if __name__ == "__main__":
+    a = linked_list().head
+    print(a)
+
     pass
