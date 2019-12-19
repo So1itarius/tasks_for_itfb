@@ -10,6 +10,7 @@ kiwisolver==1.1.0
 matplotlib==3.1.2
 natasha==0.10.0
 numpy==1.17.4
+psycopg2==2.8.4
 pymorphy2==0.8
 pymorphy2-dicts==2.4.393442.3710985
 pyparsing==2.4.5
