@@ -19,16 +19,19 @@ def get_html(url):
 
 
 def speed_searcher(text):
+    # Ищем информацию о скорости ветра, начиная со слов "ветер" и до м/с.
     result = re.search(r'[Вв]етер.+м/с\.', text)
     return result.group(0)
 
 
 def probability_searcher(text):
+    # Ищем информацию о вероятности осадков, начиная со слов "вероятность" и до %.
     result = re.search(r'[Вв]ероятность.+%\.', text)
     return result.group(0)
 
 
 def save_line(a, b, c, d):
+    # Форма для заполнения массива информации
     dict = {"weekday": a,
             "temperature": b,
             "speed": c,
