@@ -1,1 +1,0 @@
-select * from regional_fairs

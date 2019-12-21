@@ -1,8 +1,11 @@
 import json
+from setting import path, con
+"""
+Открываем json файл и, в цикле, вносим по одной записи в бд.
+Вручную обрабатываем строки так, чтобы подошло под формат (последний столбец самый мудреный).
+Все записи, кроме id имеют тип String
+"""
 
-import psycopg2
-
-from Work_with_sql.setting import path, con
 
 print("Database opened successfully")
 
