@@ -1,17 +1,27 @@
 import collections
+import re
 
 from bs4 import BeautifulSoup
 from natasha import NamesExtractor
 
-from utils import diagram
-from Parser.p_utils import get_html
+from utils import diagram, get_html
+
 """
 Такая же проблема с импортом, что и в задаче 1.
+Из за этого приходится дублировать функции
 """
 
-# full_text = ""
 
 result = []
+
+
+def pattern(str):
+    res = re.findall(r'first=[\'\w]+,|last=[\'\w]+,', str)
+    f = "" if res[0].replace("'", "").replace(",", "").split("=")[1] == "None" else \
+        res[0].replace("'", "").replace(",", "").split("=")[1]
+    l = "" if res[1].replace("'", "").replace(",", "").split("=")[1] == "None" else \
+        res[1].replace("'", "").replace(",", "").split("=")[1]
+    return (f + " " + l).strip()
 
 
 def n_searcher(text):
@@ -20,16 +30,18 @@ def n_searcher(text):
     global result
     extractor = NamesExtractor()
     matches = extractor(text)
+    app = result.append
     for match in matches:
-        result.append(str(match.fact))
-        # print(match.fact)
+        app(pattern(str(match.fact)))
 
 
-def draw_graph(dict):
-    res = collections.Counter(dict)
-    for key, value in res.items():
-        print(key, value)
-    diagram(res)
+def draw_graph(lst):
+    res = collections.Counter(lst).most_common(20)
+    dict = {}
+    for item in res:
+        dict[item[0]] = item[1]
+        print(item[0], item[1])
+    diagram(dict)
 
 
 def get_yandex_href():
@@ -46,6 +58,7 @@ def get_yandex_href():
 
 if __name__ == "__main__":
     # Парсим яндекс и собираем все новости, во всех категориях.Заполняем масссив всеми найдеными именами
+    # Медленно работает из за объема данных или алгоритма
     get_yandex_href()
-    # Подсчитываем слова и рисуем график, для удобства выводим имена в консоль
+    # Подсчитываем слова (топ 20) и рисуем график, для удобства выводим имена в консоль
     draw_graph(result)
