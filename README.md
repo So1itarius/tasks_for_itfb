@@ -124,7 +124,7 @@ https://news.yandex.ru/politics.rss
 
 >jupyter notebook
 
-В открывшемся окне ищем файл _main.ipynb_ в папке Data+sql+graph+pand, открываем и смотрим все шаги
+В открывшемся окне ищем файл _main.ipynb_ в папке Data_sql_graph_pand, открываем и смотрим все шаги
 
 ### Задача 5.Классификация эмоциональной окраски отзывов.
 ####Описание
