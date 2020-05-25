@@ -3,46 +3,69 @@
 """
 
 
-class LinkedList():
+class LinkedList:
 
     def __init__(self):
-        self.head = node(None, None)
+        self.head = Node(None, None)
 
     def insert_at_end(self, data):
         """ InsertAtEnd – вставка в конец.
+            (добавляем к начальному узлу)
         """
         a = self.head
         while True:
             if a.pointer is None:
-                a.pointer = node(data, None)
+                a.pointer = Node(data, None)
                 break
             else:
                 a = a.pointer
 
-    def InsertAtHead(self, data):
-        """  InsertAtHead – вставка в начало. """
+    def insert_at_head(self, data):
+        """  InsertAtHead – вставка в начало.
+             (заменяем начальный узел)
+        """
+        self.head = Node(data, self.head.pointer)
 
-    def Delete(self):
+    def delete(self, data):
         """ Delete– удаление указанного элемента."""
+        a = self.head
+        b = self.head
+        while True:
+            if a is None:
+                return False
+            if a.data == data:
+                b.pointer = a.pointer
+                break
+            else:
+                b = a
+                a = a.pointer
 
-    pass
 
-    def DeleteAtHead(self):
-        """DeleteAtHead – удаление первого элемента. """
 
-    pass
+    def delete_at_head(self):
+        """ DeleteAtHead – удаление первого элемента. """
+        self.head = self.head.pointer
 
-    def Search(self, index):
+    def search(self, data):
         """ Search– получение указанного элемента."""
-        return
+        a = self.head
+        while True:
+            if a is None:
+                return False
+            if a.data == data:
+                return a
+            else:
+                a = a.pointer
 
-    def isEmpty(self):
+    def is_empty(self):
         """– возвращает true, если связный список пуст."""
+        if self.head.data is None and self.head.pointer is None:
+            return True
+        else:
+            return False
 
-    pass
 
-
-class node():
+class Node:
 
     def __init__(self, data, pointer):
         self.data = data
@@ -54,8 +77,13 @@ class node():
 
 if __name__ == "__main__":
     a = LinkedList()
+    print(a.is_empty())
     a.insert_at_end("qwerty")
     a.insert_at_end("qwerty1")
     a.insert_at_end("qwerty2")
     a.insert_at_end("qwerty3")
+    a.insert_at_head("qwerty0")
     print(a.head)
+    a.delete("qwerty3")
+    print(a.head)
+    print(a.search("qwerty2"))
