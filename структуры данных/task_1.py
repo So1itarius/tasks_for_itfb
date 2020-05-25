@@ -3,21 +3,24 @@
 """
 
 
-class linked_list(object):
-    pass
+class LinkedList():
 
     def __init__(self):
-        self.head = None
+        self.head = node(None, None)
 
-    def InsertAtEnd(self):
-        """ InsertAtEnd – вставка в конец. """
+    def insert_at_end(self, data):
+        """ InsertAtEnd – вставка в конец.
+        """
+        a = self.head
+        while True:
+            if a.pointer is None:
+                a.pointer = node(data, None)
+                break
+            else:
+                a = a.pointer
 
-    pass
-
-    def InsertAtHead(self):
-        """  InsertAtHead– вставка в начало. """
-
-    pass
+    def InsertAtHead(self, data):
+        """  InsertAtHead – вставка в начало. """
 
     def Delete(self):
         """ Delete– удаление указанного элемента."""
@@ -29,10 +32,9 @@ class linked_list(object):
 
     pass
 
-    def Search(self):
+    def Search(self, index):
         """ Search– получение указанного элемента."""
-
-    pass
+        return
 
     def isEmpty(self):
         """– возвращает true, если связный список пуст."""
@@ -40,15 +42,20 @@ class linked_list(object):
     pass
 
 
-class node(object):
+class node():
 
     def __init__(self, data, pointer):
         self.data = data
         self.pointer = pointer
 
+    def __str__(self):
+        return f"Node({self.data}, {self.pointer})"
+
 
 if __name__ == "__main__":
-    a = linked_list().head
-    print(a)
-
-    pass
+    a = LinkedList()
+    a.insert_at_end("qwerty")
+    a.insert_at_end("qwerty1")
+    a.insert_at_end("qwerty2")
+    a.insert_at_end("qwerty3")
+    print(a.head)
